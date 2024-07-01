@@ -26,7 +26,11 @@ pub fn input<T: std::str::FromStr>(prompt: &str) -> T {
     }
 }
 
-pub fn input_constrained<T: std::str::FromStr>(prompt: &str, p: fn(&T) -> bool) -> T {
+pub fn input_constrained<T, F>(prompt: &str, mut p: F) -> T 
+where
+    T: std::str::FromStr,
+    F: FnMut(&T) -> bool
+{
     loop {
         let input: T = input(prompt);
 
