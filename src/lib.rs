@@ -14,6 +14,10 @@ fn read_console(prompt: &str) -> String {
     input.to_string()
 }
 
+pub fn wait() {
+    let _ = read_console("");
+}
+
 pub fn input<T: std::str::FromStr>(prompt: &str) -> T {
     loop {
         let input = read_console(prompt);
